@@ -1,6 +1,6 @@
-// import { Options } from 'sequelize';
+import { Options } from 'sequelize';
 
-const config = {
+const config: Options = {
   username: 'root',
   password: 'root',
   database: 'list-resttrict',
