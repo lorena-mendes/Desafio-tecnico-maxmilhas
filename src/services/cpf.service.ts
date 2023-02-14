@@ -2,8 +2,7 @@ import ICpf from '../Interfaces/ICpf';
 import cpfsModel from '../database/models/cpf.model';
 
 const addCpf = async (cpf: ICpf) => {
-  const params = { created_at: new Date, ...cpf };
-  console.log(params);
+  const params = { created_at: new Date, cpf };
   const newCpf = await cpfsModel.create(params);
   return newCpf;
 };

@@ -1,21 +1,25 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { cpf } from 'cpf-cnpj-validator';
-
-// import Cpfs from '../database/models/cpf.model';
 
 const messageInvalidCpf = {"type": "InvalidCpfException", "message": "CPF is not valid."};
 
-const validateCpf = async (req: Request, res: Response) => {
+const validateCpf = async (req: Request, res: Response, next: NextFunction) => {
   const cpfObject = req.body;
+  const regex = new RegExp('^[0-9]+$');
+
+  if(!regex.test(cpfObject.cpf)) {
+    return res.status(401).json(messageInvalidCpf);
+  }
+  if(typeof cpfObject.cpf !== 'string') {
+    return res.status(401).json(messageInvalidCpf);
+  }
   
   const isValid = cpf.isValid(cpfObject.cpf);
-  console.log(isValid);  
   
   if(!isValid) {
     return res.status(400).json(messageInvalidCpf);
   }
-
-  return res.status(200).json(cpfObject);
+  next();
 };
 
 export default validateCpf;
