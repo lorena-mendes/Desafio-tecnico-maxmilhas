@@ -1,5 +1,5 @@
 interface ICpf {
-  id: number,
+  id?: number,
   cpf: string,
 }
 

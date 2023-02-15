@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getAllCpf, addNewCpf } from '../controllers/cpf.controller';
+import { getAllCpf, addNewCpf, cpfCheck } from '../controllers/cpf.controller';
 import validateCpf from '../middlewares/cpf.middleware';
 
 const router = Router();
@@ -9,6 +9,11 @@ router.post(
   '/cpf',
   validateCpf,
   addNewCpf,
-  );
+);
+router.get(
+  '/cpf/:cpf',
+  cpfCheck,
+);
+
 
 export default router;

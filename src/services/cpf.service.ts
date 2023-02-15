@@ -2,9 +2,16 @@ import ICpf from '../Interfaces/ICpf';
 import cpfsModel from '../database/models/cpf.model';
 
 const addCpf = async (cpf: ICpf) => {
-  const params = { created_at: new Date, cpf };
+  const params = { cpf, created_at: new Date };
   const newCpf = await cpfsModel.create(params);
   return newCpf;
+};
+
+const checkCpf = async (cpf: string) => {
+  const getCpf = await cpfsModel.findOne({ 
+    where: { cpf: cpf }, attributes: { exclude: ['id']}
+  });
+  return getCpf;
 };
 
 const findAllCpfs = async (): Promise<ICpf[]> => {
@@ -15,4 +22,5 @@ const findAllCpfs = async (): Promise<ICpf[]> => {
 export {
   findAllCpfs,
   addCpf,
+  checkCpf,
 };
