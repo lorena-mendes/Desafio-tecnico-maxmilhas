@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { findAllCpfs, addCpf, checkCpf } from '../services/cpf.service';
 import { cpf } from 'cpf-cnpj-validator';
 
-
 const messageCpfAlreadyExist = {"type": "ExistsCpfException", "message": "CPF already registered."};
 const messageCpfNotFound = {"type": "NotFoundCpfException", "message": "CPF not found."};
 const messageInvalidCpf = {"type": "InvalidCpfException", "message": "CPF is not valid."};
@@ -10,9 +9,9 @@ const messageInvalidCpf = {"type": "InvalidCpfException", "message": "CPF is not
 const addNewCpf = async (req: Request, res: Response) => {
   const { cpf } = req.body;
 
-  const [cpfs] = await findAllCpfs();
+  const cpfAlreadyRegistered = await checkCpf(cpf);  
 
-  if(cpfs.cpf === cpf) {
+  if(cpfAlreadyRegistered?.cpf === cpf) {
     return res.status(400).json(messageCpfAlreadyExist);
   }
 
