@@ -14,6 +14,13 @@ const checkCpf = async (cpf: string) => {
   return getCpf;
 };
 
+const removeCpf = async (cpf: string) => {
+  const removed = await cpfsModel.destroy(
+    { where: { cpf }}
+  );
+  return removed;
+};
+
 const findAllCpfs = async (): Promise<ICpf[]> => {
   const cpfs = await cpfsModel.findAll();
   return cpfs;
@@ -23,4 +30,5 @@ export {
   findAllCpfs,
   addCpf,
   checkCpf,
+  removeCpf,
 };

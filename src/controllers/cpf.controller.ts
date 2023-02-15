@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { findAllCpfs, addCpf, checkCpf } from '../services/cpf.service';
+import { findAllCpfs, addCpf, checkCpf, removeCpf } from '../services/cpf.service';
 import { cpf } from 'cpf-cnpj-validator';
 
 const messageCpfAlreadyExist = {"type": "ExistsCpfException", "message": "CPF already registered."};
@@ -33,6 +33,23 @@ const cpfCheck = async (req: Request, res: Response) => {
   return res.status(200).json(result);
 };
 
+const removedCpf = async (req: Request, res: Response) => {
+  const cpfDelete = req.params;
+
+  const isValid = cpf.isValid(cpfDelete.cpf);
+  if(!isValid) {
+    return res.status(400).json(messageInvalidCpf);
+  }
+  const result = await checkCpf(cpfDelete.cpf);
+  if (!result) {
+    return res.status(404).json(messageCpfNotFound);
+  } 
+
+  await removeCpf(cpfDelete.cpf);
+
+  return res.status(200).json({ message: 'Cpf removed successfully.' });
+};
+
 const getAllCpf = async (_req: Request, res: Response) => {
   const cpfs = await findAllCpfs();
 
@@ -43,4 +60,5 @@ export {
   getAllCpf,
   addNewCpf,
   cpfCheck,
+  removedCpf,
 };
