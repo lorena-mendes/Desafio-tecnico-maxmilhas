@@ -6,13 +6,10 @@ A aplicação consiste em uma sistema de controle de CPFs. Foi desenvolvida em `
 
 # Requisitos para rodar a aplicação
 
-  * MySql server;
-  * DBeaver (não obrigatório);
-  * Node.js;
-  * Gerenciador de pacotes npm.
+  Para executar este projeto, você precisará ter o Docker e o Docker Compose instalados no seu sistema. Você pode baixá-los e instalá-los seguindo as instruções na documentação oficial do Docker.
 
 # Como executar a aplicação
 
-  * Depois de extrair o arquivo, fazer a instalação e configuração do MySql server deverá ser feita a configuração das variáveis de ambiente no arquivo .env de acordo com as suas credenciais e a porta que irá rodar a aplicação.
+  * Depois de extrair o arquivo, fazer a instalação e configuração do MySql server deverá ser feita a configuração das variáveis de ambiente no arquivo .env de acordo com as suas credenciais e a porta que irá rodar a aplicação. Navegue até a pasta raiz do projeto e rode o comando `docker-compose up -d`.
 
   
