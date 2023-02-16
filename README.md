@@ -2,7 +2,7 @@
 
 # Sobre a aplicação
 
-A aplicação consiste em uma sistema de controle de CPFs. Foi desenvolvida em `Typescript` e `Node.js` usando o pacote `sequelize` para fazer um `CRUD` de cpfs. Foram desenvolvidos endpoints que estarão conectados ao bando de dados, utilizando o `MySql` com container `Docker` seguindo os princípios de REST. Para um cpf ser incuído com sucesso ao banco de dados ele passa por validações e verificações de duplicidade.
+A aplicação consiste em um sistema de controle de CPFs. Foi desenvolvida em `Typescript` e `Node.js` usando o ORM `sequelize` para fazer um `CRUD` de cpfs. Foram desenvolvidos endpoints que estarão conectados ao bando de dados, utilizando o `MySql` com container `Docker` seguindo os princípios de REST. Para um cpf ser incuído com sucesso ao banco de dados ele passa por validações e verificações de duplicidade.
 
 # Requisitos para rodar a aplicação
 
