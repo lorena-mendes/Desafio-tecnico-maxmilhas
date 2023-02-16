@@ -10,6 +10,10 @@ A aplicação consiste em uma sistema de controle de CPFs. Foi desenvolvida em `
 
 # Como executar a aplicação
 
-  * Depois de extrair o arquivo, fazer a instalação e configuração do MySql server deverá ser feita a configuração das variáveis de ambiente no arquivo .env de acordo com as suas credenciais e a porta que irá rodar a aplicação. Navegue até a pasta raiz do projeto e rode o comando `docker-compose up -d`.
+  * Depois de extrair o arquivo, fazer a instalação e configuração do MySql deverá ser feita a configuração das variáveis de ambiente no arquivo .env de acordo com as suas credenciais e a porta que irá rodar a aplicação. 
+  * Navegue até a pasta raiz do projeto e rode o comando `docker-compose up -d`;
+  * Execute a migration com o comando `npx sequelize-cli db:migrate`;
+  * Inicie a aplicação com o comando `npm run dev`.  
+
 
   
